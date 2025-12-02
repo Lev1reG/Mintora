@@ -3,6 +3,9 @@ mod routes;
 mod db;
 mod app_state;
 mod error;
+mod utils;
+mod dto;
+mod middleware;
 
 use app_state::AppState;
 use config::Config;
@@ -45,7 +48,7 @@ async fn main() {
     tracing::info!("Database migrations completed successfully");
 
     // Create application state
-    let app_state = AppState::new(db_pool);
+    let app_state = AppState::new(db_pool, config.clone());
 
     // Build application with routes and middleware
     let app = routes::create_router()
