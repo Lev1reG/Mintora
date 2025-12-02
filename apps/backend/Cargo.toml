@@ -35,3 +35,12 @@ sqlx = { version = "0.8", features = [
 uuid = { version = "1.10", features = ["v4", "serde"] }
 chrono = { version = "0.4", features = ["serde"] }
 rust_decimal = { version = "1.33", features = ["db-tokio-postgres"] }
+
+# Authentication & Security
+argon2 = { version = "0.5", features = ["std"] }
+jsonwebtoken = "9.2"
+rand = "0.8"
+sha2 = "0.10"
+hex = "0.4"
+validator = { version = "0.18", features = ["derive"] }
+axum-extra = { version = "0.9", features = ["typed-header"] }
