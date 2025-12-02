@@ -30,6 +30,8 @@ sqlx = { version = "0.8", features = [
     "json",
     "migrate",
     "macros",
+    "rust_decimal",
 ] }
 uuid = { version = "1.10", features = ["v4", "serde"] }
 chrono = { version = "0.4", features = ["serde"] }
+rust_decimal = { version = "1.33", features = ["db-tokio-postgres"] }
