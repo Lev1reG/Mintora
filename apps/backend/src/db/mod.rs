@@ -2,6 +2,7 @@ use sqlx::{postgres::PgPoolOptions, PgPool};
 use std::time::Duration;
 
 pub mod models;
+pub mod repositories;
 
 /// Initialize database connection pool
 pub async fn create_pool(database_url: &str) -> Result<PgPool, sqlx::Error> {
