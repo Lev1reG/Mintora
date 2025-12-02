@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+
+# Nx
+.nx/
+dist/
+.angular/
+
+# Build outputs
+apps/*/dist/
+apps/*/build/
+libs/*/dist/
+
+# Vite
+vite.config.*.timestamp*
+vitest.config.*.timestamp*
+
+# Rust
+apps/backend/target/
+
+# Python
+apps/ai-agent/.venv/
+apps/ai-agent/__pycache__/
+apps/ai-agent/*.pyc
+apps/ai-agent/.pytest_cache/
+apps/ai-agent/.ruff_cache/
+**/__pycache__/
+**/*.pyc
+**/.venv/
+
+# IDEs
+.vscode/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+tmp/
+temp/
+.cache/
