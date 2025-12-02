@@ -18,7 +18,7 @@ pub struct User {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, sqlx::Type, Serialize)]
-#[sqlx(type_name = "varchar", rename_all = "lowercase")]
+#[sqlx(type_name = "text", rename_all = "lowercase")]
 #[serde(rename_all = "lowercase")]
 pub enum UserRole {
     Admin,
@@ -26,7 +26,7 @@ pub enum UserRole {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, sqlx::Type, Serialize)]
-#[sqlx(type_name = "varchar", rename_all = "lowercase")]
+#[sqlx(type_name = "text", rename_all = "lowercase")]
 #[serde(rename_all = "lowercase")]
 pub enum UserStatus {
     Active,

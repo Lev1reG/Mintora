@@ -11,7 +11,7 @@ impl UserRepository {
         let user = sqlx::query_as::<_, User>(
             r#"
             SELECT id, email, username, full_name, password_hash,
-                   role as "role: _", status as "status: _",
+                   role::text as role, status::text as status,
                    created_at, updated_at, deleted_at
             FROM users
             WHERE email = $1 AND deleted_at IS NULL
@@ -29,7 +29,7 @@ impl UserRepository {
         let user = sqlx::query_as::<_, User>(
             r#"
             SELECT id, email, username, full_name, password_hash,
-                   role as "role: _", status as "status: _",
+                   role::text as role, status::text as status,
                    created_at, updated_at, deleted_at
             FROM users
             WHERE id = $1 AND deleted_at IS NULL
@@ -52,10 +52,10 @@ impl UserRepository {
     ) -> Result<User, AppError> {
         let user = sqlx::query_as::<_, User>(
             r#"
-            INSERT INTO users (email, username, full_name, password_hash, role, status)
-            VALUES ($1, $2, $3, $4, $5, $6)
+            INSERT INTO users (email, username, full_name, password_hash)
+            VALUES ($1, $2, $3, $4)
             RETURNING id, email, username, full_name, password_hash,
-                      role as "role: _", status as "status: _",
+                      role::text as role, status::text as status,
                       created_at, updated_at, deleted_at
             "#,
         )
@@ -63,8 +63,6 @@ impl UserRepository {
         .bind(username)
         .bind(full_name)
         .bind(password_hash)
-        .bind(UserRole::User)
-        .bind(UserStatus::Active)
         .fetch_one(pool)
         .await?;
 

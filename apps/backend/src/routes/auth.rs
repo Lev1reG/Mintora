@@ -12,7 +12,7 @@ use crate::{
     db::repositories::{ApiKeyRepository, RefreshTokenRepository, UserRepository},
     dto::auth::*,
     error::AppError,
-    middleware::{AuthUser, ApiKeyAuth},
+    middleware::AuthUser,
     utils::{
         api_key::generate_api_key,
         jwt::{generate_access_token, generate_refresh_token, validate_token, extract_user_id, TokenType},

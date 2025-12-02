@@ -29,7 +29,7 @@ COMMENT ON COLUMN "api_keys"."revoked_at" IS 'NULL = active, NOT NULL = revoked'
 CREATE INDEX idx_api_keys_user_id ON "api_keys" ("user_id");
 CREATE INDEX idx_api_keys_key_hash ON "api_keys" ("key_hash");
 CREATE INDEX idx_api_keys_active ON "api_keys" ("user_id")
-  WHERE revoked_at IS NULL AND (expires_at IS NULL OR expires_at > now());
+  WHERE revoked_at IS NULL;
 CREATE INDEX idx_api_keys_prefix ON "api_keys" ("key_prefix");
 
 -- Unique constraint: user cannot have duplicate API key names

@@ -1,5 +1,5 @@
 use hex;
-use rand::Rng;
+use rand::{Rng, RngCore};
 use sha2::{Digest, Sha256};
 use crate::error::AppError;
 
@@ -19,7 +19,8 @@ pub fn generate_api_key(is_live: bool) -> Result<GeneratedApiKey, AppError> {
 
     // Generate random bytes
     let mut rng = rand::thread_rng();
-    let random_bytes: Vec<u8> = (0..API_KEY_LENGTH).map(|_| rng.gen()).collect();
+    let mut random_bytes = vec![0u8; API_KEY_LENGTH];
+    rng.fill(&mut random_bytes[..]);
     let random_part = hex::encode(random_bytes);
 
     // Construct full key: prefix + random_part
